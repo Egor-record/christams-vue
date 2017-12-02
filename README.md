@@ -1,6 +1,6 @@
 # christmas
 
-> A Vue.js project
+> A Vue.js project. Статичная страничка без Vue лежит - https://e922.ru/examples/xmas/index.html
 
 ## Build Setup
 
