@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>christmas</title>
+    <link rel="icon" type="image/png" sizes="32x32" href="<%= htmlWebpackPlugin.files.publicPath %>static/img/icons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="<%= htmlWebpackPlugin.files.publicPath %>static/img/icons/favicon-16x16.png">
+    <!--[if IE]><link rel="shortcut icon" href="/static/img/icons/favicon.ico"><![endif]-->
+    <!-- Add to home screen for Android and modern mobile browsers -->
+    <link rel="manifest" href="<%= htmlWebpackPlugin.files.publicPath %>static/manifest.json">
+    <meta name="theme-color" content="#4DBA87">
+
+    <!-- Add to home screen for Safari on iOS -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="christmas">
+    <link rel="apple-touch-icon" href="<%= htmlWebpackPlugin.files.publicPath %>static/img/icons/apple-touch-icon-152x152.png">
+    <link rel="mask-icon" href="<%= htmlWebpackPlugin.files.publicPath %>static/img/icons/safari-pinned-tab.svg" color="#4DBA87">
+    <!-- Add to home screen for Windows -->
+    <meta name="msapplication-TileImage" content="<%= htmlWebpackPlugin.files.publicPath %>static/img/icons/msapplication-icon-144x144.png">
+    <meta name="msapplication-TileColor" content="#000000">
+    <% for (var chunk of webpack.chunks) {
+        for (var file of chunk.files) {
+          if (file.match(/\.(js|css)$/)) { %>
+    <link rel="<%= chunk.initial?'preload':'prefetch' %>" href="<%= htmlWebpackPlugin.files.publicPath + file %>" as="<%= file.match(/\.css$/)?'style':'script' %>"><% }}} %>
+    <link rel="preload" href="<%= htmlWebpackPlugin.files.publicPath %>static/fonts/avenir/avenirnextregular.woff?ver=3.0.5" as="font" crossorigin type="font/woff">
+    <link rel="stylesheet" href="<%= htmlWebpackPlugin.files.publicPath %>static/css/style.css?ver=3.0.5">
+  </head>
+  <body>
+    <noscript>
+      This is your fallback content in case JavaScript fails to load.
+    </noscript>
+    <header>
+      <div class="container">
+        <nav class="navbar navbar-expand-lg navbar-light bd-navbar" id="header__nav">
+
+          <a class="navbar-brand" href="#">
+
+          </a>
+          <button class="navbar-toggler g-brd-blue g-color-greeb" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon g-color-green"></span>
+          </button>
+          <div class="navbar-collapse collapse justify-content-between" id="navbarNavAltMarkup">
+            <div class="navbar-nav" id="js-navbar-nav">
+              <a class="nav-item nav-link g-color-green js-scroll-down active" href="#promo">Главная</a>
+              <a class="nav-item nav-link g-color-green js-scroll-down" href="#catalog">Каталог</a>
+              <a class="nav-item nav-link g-color-green js-scroll-down" href="#pluses">Преимущества</a>
+              <a class="nav-item nav-link g-color-green js-scroll-down" href="#work">Как мы работаем</a>
+              <a class="nav-item nav-link g-color-green js-scroll-down" href="#contacts">Где посмотреть</a>
+              <a class="nav-item nav-link g-color-green js-scroll-down" href="#form">Контакты</a>
+              <a class="nav-item nav-link g-color-green d-md-none" href="tel:649-09-30">649-09-30</a>
+            </div>
+          </div>
+          <div class="nav-social d-none d-lg-flex">
+            <a class="nav-item nav-link g-color-green header__vk" href="https://vk.com" target="_blank" rel="nofollow"></a>
+            <a class="nav-item nav-link g-color-green header__inst" href="https://instagram.com" target="_blank" rel="nofollow"></a>
+          </div>
+          <div class="nav-phone d-none d-lg-block">
+            <a class="nav-item nav-link g-color-green has-phone-sign" href="tel:649-09-30">649-09-30</a>
+          </div>
+        </nav>
+      </div>
+    </header>
+    <main>
+
+      <section id="promo" class="g-bg-green d-flex justify-content-center align-items-md-center">
+
+        <div class="container">
+
+          <div class="promo_inner text-center">
+
+            <h1 class="g-color-white text-uppercase">ЗАКАЖИТЕ ЁЛКУ С БЕСПЛАТНОЙ ДОСТАВКОЙ</h1>
+            <p class="g-color-white">Пришла пора готовится к Новому году! Искусственные елки из России и Голландии</p>
+          </div>
+          <div class="promo_form-container">
+            <form id="promo_form" class="js-form-submit d-flex flex-column flex-md-row justify-content-center">
+              <div class="form-group d-flex justify-content-center d-md-block">
+                <input type="text" class="form-control" id="promo_name" name="name" placeholder="Имя" required="required">
+              </div>
+              <div class="form-group d-flex justify-content-center d-md-block">
+                <input type="tel" class="form-control bfh-phone" id="promo_phone" data-format="+7 (ddd) ddd-dddd" name="phone" placeholder="Телефон" required="required">
+              </div>
+              <div class="bnt-wrapper d-flex justify-content-center d-md-block">
+                <button type="submit" class="btn btn-primary g-color-white g-bg-red">Хочу елку</button>
+              </div>
+            </form>
+          </div>
+
+        </div>
+
+      </section>
+
+      <section id="catalog" class="pt-52 pb-52">
+        <div class="container">
+          <h2 class="g-color-red text-uppercase text-center pb-28">Каталог</h2>
+          <div id="app"></div>
+        </div>
+      </section>
+          <section id="time" class="g-bg-grey pt-76 pb-62">
+            <div class="container">
+              <h2 class="g-color-red text-uppercase pb-10 text-center">До нового года осталось</h2>
+              <div class="js-time pb-53 time_counter">
+
+              </div>
+              <p class="g-color-dark-green pb-13 text-center">
+                Оставьте заявку сейчас, и мы свяжемся с вами
+              </p>
+              <form id="time_form" class="js-form-submit d-flex flex-column flex-md-row justify-content-center">
+                <div class="form-group d-flex justify-content-center d-md-block">
+                  <input type="text" class="form-control" id="time_name" name="name" placeholder="Имя" required="required">
+                </div>
+                <div class="form-group d-flex justify-content-center d-md-block">
+                  <input type="tel" class="form-control bfh-phone" id="time_phone" data-format="+7 (ddd) ddd-dddd" name="phone" placeholder="Телефон" required="required">
+                </div>
+                <div class="bnt-wrapper d-flex justify-content-center d-md-block">
+                  <button type="submit" class="btn btn-primary g-color-white g-bg-red">Хочу елку</button>
+                </div>
+              </form>
+            </div>
+          </section>
+
+
+          <section id="stat" class="g-bg-green g-color-white pt-83 pb-94 has-snow">
+            <div class="container">
+              <div class="row">
+                <div class="col-12 col-md-6 col-lg-4 text-center">
+                  <div class="has-border stat_big">
+                    5
+                  </div>
+                  <div class="stat_about">
+                    Лет на рынке
+                  </div>
+                </div>
+                <div class="col-12 col-md-6 col-lg-4 text-center">
+                  <div class="has-border stat_big ">
+                    30
+                  </div>
+                  <div class="stat_about">
+                    Продаж в неделю
+                  </div>
+                </div>
+                <div class="col-12 col-md-6 col-lg-4 text-center">
+                  <div class="has-border stat_big">
+                    <span class="small">Более</span> 2000
+                  </div>
+                  <div class="stat_about">
+                    Довольных клиентов
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="snow-left"></div>
+            <div class="snow-right"></div>
+          </section>
+
+          <section id="pluses" class="g-bg-white pt-57 pb-75">
+            <div class="container">
+              <h2 class="g-color-dark-green text-uppercase pb-75 text-center">Преимущества</h2>
+              <div class="row">
+                <div class="col-12 col-md-6 col-lg-3 text-center ptb-22">
+                  <div class="icon"></div>
+                  <div class="text-uppercase">Лучшая цена</div>
+                </div>
+                <div class="col-12 col-md-6 col-lg-3 text-center ptb-22">
+                  <div class="icon plus_icon-2"></div>
+                  <div class="text-uppercase">Долговечность</div>
+                </div>
+                <div class="col-12 col-md-6 col-lg-3 text-center ptb-22">
+                  <div class="icon plus_icon-3"></div>
+                  <div class="text-uppercase">БЕЗОПАСНОСТЬ</div>
+                </div>
+                <div class="col-12 col-md-6 col-lg-3 text-center ptb-22">
+                  <div class="icon plus_icon-4"></div>
+                  <div class="text-uppercase">ЭСТЕТИЧНОСТЬ</div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <section id="work" class="g-bg-green g-color-white has-snow pt-57 pb-75">
+            <div class="container">
+              <h2 class="text-uppercase text-center pb-60">
+                Как мы работаем
+              </h2>
+              <div class="row">
+                <div class="col-12 col-md-6 col-lg-3 text-center ptb-22">
+                  <div class="icon"></div>
+                  <div class="text-uppercase">Вы оставляете заявку на нашем сайте</div>
+                </div>
+                <div class="col-12 col-md-6 col-lg-3 text-center ptb-22">
+                  <div class="icon work_icon-2"></div>
+                  <div class="text-uppercase">Мы связываемся с вами для уточнения деталей</div>
+                </div>
+                <div class="col-12 col-md-6 col-lg-3 text-center ptb-22">
+                  <div class="icon work_icon-3"></div>
+                  <div class="text-uppercase">Отправляем ваш заказ по указанному адресу бесплатно по СПб в пределах КАД</div>
+                </div>
+                <div class="col-12 col-md-6 col-lg-3 text-center ptb-22">
+                  <div class="icon work_icon-4"></div>
+                  <div class="text-uppercase">Вы оплачиваете заказ после получения</div>
+                </div>
+              </div>
+            </div>
+            <div class="snow-left"></div>
+            <div class="snow-right"></div>
+          </section>
+
+          <section id="contacts" class="g-bg-grey pt-105 pb-80">
+            <div class="container">
+              <h2 class="text-uppercase text-center">где посмотреть елки?</h2>
+              <p class="g-color-green text-center small">
+                Вы можете посмотреть и потрогать топовые модели наших искусственных елок в выставочном зале ежедневно с 10:00 до 21:00
+                <br/>
+                <span class="small">
+                 (перед посещением позвоните или напишите нам)
+            </span>
+              </p>
+              <p class="address text-center pt-93">
+                Санкт-Петербург,Обводный канал 150, БЦ «Металлист», ст.м. Нарвская
+              </p>
+            </div>
+          </section>
+
+          <section id="form" class="g-bg-white pt-52 pb-52">
+            <div class="container">
+              <h2 class="g-color-black text-uppercase text-center">Напиши нам</h2>
+              <form id="form__footer" class="js-form-submit">
+                <div class="form-group d-flex justify-content-center d-md-block">
+                  <input type="text" class="form-control form-control--grey" id="footer_name" name="name" placeholder="Имя" required="required">
+                </div>
+                <div class="form-group d-flex justify-content-center d-md-block">
+                  <input type="tel" class="form-control form-control--grey bfh-phone" id="footer_phone" data-format="+7 (ddd) ddd-dddd" name="phone" placeholder="Телефон" required="required">
+                </div>
+                <div class="form-group d-flex justify-content-center d-md-block">
+                  <input type="email" class="form-control form-control--grey" id="email_phone" name="email" placeholder="Email">
+                </div>
+                <div class="form-group d-flex justify-content-center d-md-block">
+                  <textarea class="form-control form-control--grey form-control--textarea" id="textarea_phone" name="phone" placeholder="Сообщение..."></textarea>
+                </div>
+                <div class="d-flex justify-content-center"><button class="btn g-bg-red g-color-white" type="submit">Отправить</button></div>
+              </form>
+            </div>
+          </section>
+
+    </main>
+
+    <footer class="g-bg-green pt-22 pb-39">
+      <div class="container">
+        <div class="row">
+          <div class="col-12 col-md-8">
+            <a href="#" class="footer__logo navbar-brand"></a>
+            <p class="g-color-white">Проект aelka.ru</p>
+            <div class="footer__social">
+              <a href="https://vk.com/" class="vk icon" target="_blank" rel="nofollow"></a>
+              <a href="https://instagram.com" class="inst icon" target="_blank" rel="nofollow"></a>
+            </div>
+          </div>
+          <div class="col-12 col-md-4 footer_cont">
+            <h3 class="g-color-white text-uppercase">
+              Контакты
+            </h3>
+
+            <address class="g-color-white">
+              Санкт-Петербург, Обводный канал 150, БЦ «Металлист»
+            </address>
+            <a href="mailto:info@aelka.ru" class="g-color-white mail">info@aelka.ru</a><br/>
+            <a href="tel:6490930" class="g-color-white phone">649-09-30</a>
+
+          </div>
+        </div>
+      </div>
+    </footer>
+
+
+
+    <div class="alert alert-success" role="alert">
+      <strong class="alert-heading">Спасибо!</strong> Ваша заявка принята. Мы свяжемся с Вами!
+    </div>
+    <div class="alert alert-danger" role="alert">
+      <strong class="alert-heading">Что-то пошло не так!</strong> Мы уже работаем над этим
+    </div>
+
+    <div class="modal fade modal-checkout" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title" id="myLargeModalLabel">Оформление заказа</h4>
+            <button type="button" class="close btn" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">×</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <h4>Вы заказали:</h4>
+            <div id="js-place-for-orders" class="pt20">
+
+            </div>
+            <div class="modal__form-wrapper mt-20">
+              <h4>Подтвердите контактные данные:</h4>
+              <form id="js-modal__form" class="modal__form">
+                <div class="form-group d-flex justify-content-center d-md-block">
+                  <input type="text" class="form-control form-control--grey" id="modal_name" name="name" placeholder="Имя" required="required">
+                </div>
+                <div class="form-group d-flex justify-content-center d-md-block">
+                  <input type="tel" class="form-control form-control--grey bfh-phone" id="modal_phone" data-format="+7 (ddd) ddd-dddd" name="phone" placeholder="Телефон" required="required">
+                </div>
+                <input type="hidden" id="js-modal_order" name="order">
+                <button class="btn g-bg-green g-color-white" type="submit">Заказать</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Todo: only include in production -->
+    <%= htmlWebpackPlugin.options.serviceWorkerLoader %>
+    <!-- built files will be auto injected -->
+    <script data-main="./static/js/app.js" src="./static/js/lib/require.js"></script>
+  </body>
+</html>
